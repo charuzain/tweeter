@@ -4,7 +4,7 @@ $(document).ready(function(){
    let counter = maxCharacter-$(this).val().length;
    let counterElement=$(this).next().find('.counter');
    $(counterElement).val(`${counter}`)
-   if(counter>0){
+   if(counter>=0){
     $('.counter').css("color", "black")
    }
    else if(counter<0){$('.counter').css("color", "red")};
