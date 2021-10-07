@@ -1,0 +1,87 @@
+
+.tweet{
+  display: flex;
+  flex-direction:column
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+#tweet-text{
+  border:none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 2px solid black;
+  resize: none;
+
+}
+.tweet-footer{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tweet button{
+  background-color: #4056A1;
+  color: white;
+  margin-top: 4px;
+  font-family: 'Bungee', cursive;
+  }
+
+.counter{
+ 
+font-weight: bold;
+  }
+
+.new-tweet{
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border: 2px solid black;
+}
+
+.new-tweet:hover{
+  box-shadow:13px 15px 9px -2px rgba(0,0,0,0.4); -webkit-box-shadow: 13px 15px 9px -2px rgba(0,0,0,0.4); -moz-box-shadow: 13px 15px 9px -2px rgba(0,0,0,0.4);
+}
+.new-tweet-avatar{
+  display: flex;
+  flex-direction: row;
+}
+
+.new-tweet footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sirlsaac{
+  flex-grow: 1;
+  text-align: right;
+  vertical-align: middle;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;}
+
+  .profile-name{
+    vertical-align: middle;
+    align-items: center;
+    display: flex;
+    padding-left: 15px;
+
+  }
+  
+  .text-div{
+  padding: 35px 0px;
+  border-bottom: 3px solid black;
+  margin-bottom: 20px;
+    }
+.icons .fas{
+margin-left: 10px;
+color: #060f85;
+}
+.icons .fas:hover{
+color:#FDB900;
+cursor: pointer;
+}

@@ -12,8 +12,19 @@ align-items: center;
 position:fixed;
 z-index: 1;
 }
+
+.double-down{
+  display: flex;
+  flex-direction:column;
+  
+}
 #write {
-  font-family:'Source Sans Pro';
+  font-family:'Source Sans Pro'; 
+
 
 }
-
+.fa-angle-double-down{
+  align-self:center;
+  
+}
+ 
