@@ -1,4 +1,4 @@
-// const { tweets } = require("../../server/lib/in-memory-db") 
+//const { tweets } = require("../../server/lib/in-memory-db") 
 
 /*
  * Client-side JS logic goes here
@@ -6,6 +6,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
+  
   const loadTweets = function(){
     $.ajax({
       url:'/tweets',
@@ -45,16 +46,17 @@ $(document).ready(function () {
   }
 
   const renderTweets = function (tweets) {
-    // loops through tweets
+    const $tweetContainer =$('#tweets-container');
+    $tweetContainer.empty();
     for (let tweet of tweets) {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
       // takes return value and ap pends it to the tweets container
-      $('#tweets-container').append($tweet);
+      $tweetContainer.prepend($tweet);
     }
   }
 
-  renderTweets(tweets);
+  //renderTweets(tweets);
 
   $("#new-tweet-form").on('submit', function(event){
     event.preventDefault(); 
@@ -62,7 +64,8 @@ $(document).ready(function () {
     const serializeData =$(this).serialize();
     //console.log(serializeData);
     $.post("/tweets",serializeData,function(response){
-      console.log(response)
+      console.log(response);
+      loadTweets()
     })
 
   })
