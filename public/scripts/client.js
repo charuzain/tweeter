@@ -13,11 +13,11 @@ $(document).ready(function () {
       method:'GET',
       dataType:'json',
       success:(tweets)=>{
-        console.log(tweets);
+        //console.log(tweets);
        renderTweets(tweets);
       },
       error:(err)=>{
-        console.err(err);
+       // console.err(err);
       }
     })
 
@@ -56,17 +56,25 @@ $(document).ready(function () {
     }
   }
 
-  //renderTweets(tweets);
-
   $("#new-tweet-form").on('submit', function(event){
     event.preventDefault(); 
-    //console.log($(this));
+    let typedCharactersCount =$(this).find('#tweet-text').val().length;
+    if(typedCharactersCount===0){
+      alert("No tweet content!!! type something")
+    }
+    else if(typedCharactersCount >140){
+      alert("Tweet content is too long!!!Character limit is 140")
+    }
+    
+    else{
+
+    console.log($(this).find('#tweet-text').val().length);
     const serializeData =$(this).serialize();
     //console.log(serializeData);
     $.post("/tweets",serializeData,function(response){
-      console.log(response);
+      //console.log(response);
       loadTweets()
-    })
+    })}
 
   })
 
