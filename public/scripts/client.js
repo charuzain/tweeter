@@ -68,12 +68,13 @@ $(document).ready(function () {
     
     else{
 
-    console.log($(this).find('#tweet-text').val().length);
+    //console.log($(this).find('#tweet-text').val().length);
     const serializeData =$(this).serialize();
     //console.log(serializeData);
     $.post("/tweets",serializeData,function(response){
       //console.log(response);
       loadTweets()
+      $('#tweet-text').val("");
     })}
 
   })
