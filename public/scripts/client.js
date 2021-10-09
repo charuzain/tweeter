@@ -5,6 +5,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 $(document).ready(function () {
   
   const loadTweets = function(){
@@ -32,7 +38,7 @@ $(document).ready(function () {
             <span class="profile-name">${tweet.user.name}</span>
             <span class="sirlsaac">${tweet.user.handle}</span>
           </header>
-          <div class="text-div">${tweet.content.text}</div>
+          <div class="text-div">${escape(tweet.content.text)}</div>
           <footer>
             <span>${timeago.format(tweet.created_at)}</span>
             <div class="icons">
@@ -73,10 +79,15 @@ $(document).ready(function () {
     //console.log(serializeData);
     $.post("/tweets",serializeData,function(response){
       //console.log(response);
-      loadTweets()
-      $('#tweet-text').val("");
-    })}
-
+      loadTweets();
+      //$('#tweet-text').val("");
+      //$('.counter').val("140");
+    })
+    $('#tweet-text').val("");
+    $('.counter').val("140");
+    }
+    //$('#tweet-text').val("");
+    //$('.counter').val("140");
   })
 
 })
