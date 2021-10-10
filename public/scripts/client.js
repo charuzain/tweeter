@@ -71,9 +71,9 @@ $(document).ready(function () {
   $("#new-tweet-form").on('submit', function(event){
     event.preventDefault(); 
     let typedCharactersCount =$(this).find('#tweet-text').val().length;
-    if(typedCharactersCount===0){
+    if(typedCharactersCount===0||$(this).find('#tweet-text').val().trim()==="" ){
       $( ".error-container" ).slideUp( "slow", function() {
-        $('.error-message').text("No tweet content!!! type something")
+        $('.error-message').text("No tweet content!!! Type something")
       });
       $( ".error-container" ).slideDown( "slow")
 

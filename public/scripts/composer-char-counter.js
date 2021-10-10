@@ -4,10 +4,12 @@ $(document).ready(function(){
    let counter = maxCharacter-$(this).val().length;
    let counterElement=$(this).next().find('.counter');
    $(counterElement).val(`${counter}`)
-   if(counter>=0){
-    $('.counter').css("color", "black")
+   if(counter<0){
+    $('.counter').addClass("redCounter")
    }
-   else if(counter<0){$('.counter').css("color", "red")};
+   else {
+     $('.counter').removeClass("redCounter")
+    };
   
   })
 });
