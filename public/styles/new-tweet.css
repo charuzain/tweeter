@@ -26,9 +26,13 @@ form{
 
 .tweet button{
   background-color: #4056A1;
+  border: none;
   color: white;
   margin-top: 4px;
   font-family: 'Bungee', cursive;
+  }
+  .redCounter{
+    color:red;
   }
 
 .counter{
@@ -64,7 +68,8 @@ font-weight: bold;
   vertical-align: middle;
   justify-content: flex-end;
   align-items: center;
-  display: flex;}
+  display: flex;
+  color:#A0A0A0}
 
   .profile-name{
     vertical-align: middle;
@@ -94,4 +99,37 @@ cursor: pointer;
   margin-bottom: 20px;
   border:2px solid red;
   padding: 5px;
+}
+
+@media only screen and (min-width: 1024px){
+ .responsive{
+  display: flex;
+  flex-direction:row;
+  align-content:space-around;  
+}
+
+.page-header{
+margin-top: 200px;
+width:30vw;
+margin-left:3vw;
+margin-right:8vw;
+padding-top: 40px;
+
+
+}
+
+.container{
+  margin-top: 150px;
+  width: 56vw;
+  margin-right:3vw;
+  
+  
+  
+}
+nav{
+  background-color: #4056A1;
+  background-image: none;
+
+}
+
 }
