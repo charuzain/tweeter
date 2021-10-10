@@ -1,37 +1,29 @@
-//const { tweets } = require("../../server/lib/in-memory-db") 
-
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-const escape = function (str) {
+/* Client-side JS logic */
+//--------------Cross-Site Scripting-------------------------------------------------
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
   $('.error-container').hide();
-  
-  const loadTweets = function(){
+  const loadTweets = function() {
     $.ajax({
-      url:'/tweets',
-      method:'GET',
-      dataType:'json',
-      success:(tweets)=>{
-        //console.log(tweets);
-       renderTweets(tweets);
+      url: '/tweets',
+      method: 'GET',
+      dataType: 'json',
+      success: (tweets) => {
+        renderTweets(tweets);
       },
-      error:(err)=>{
-       // console.err(err);
+      error: (err) => {
       }
-    })
+    });
+  };
+  loadTweets();
 
-  }
-    loadTweets();
-
-  const createTweetElement = function (tweet) {
+  //---------------Put tweets into html format-------------------------------------
+  const createTweetElement = function(tweet) {
     let article =
       `<article class="new-tweet">
           <header class="new-tweet-avatar">
@@ -50,61 +42,40 @@ $(document).ready(function () {
          </article>`;
 
     return article;
-  }
-
-  const renderTweets = function (tweets) {
-    const $tweetContainer =$('#tweets-container');
+  };
+  //-----------Function to render tweets to DOM-----------------------------------------
+  const renderTweets = function(tweets) {
+    const $tweetContainer = $('#tweets-container');
     $tweetContainer.empty();
     for (let tweet of tweets) {
-      // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
-      // takes return value and ap pends it to the tweets container
       $tweetContainer.prepend($tweet);
     }
-  }
+  };
 
-
-
-
-
-
-  $("#new-tweet-form").on('submit', function(event){
-    event.preventDefault(); 
-    let typedCharactersCount =$(this).find('#tweet-text').val().length;
-    if(typedCharactersCount===0||$(this).find('#tweet-text').val().trim()==="" ){
-      $( ".error-container" ).slideUp( "slow", function() {
-        $('.error-message').text("No tweet content!!! Type something")
+  //-------------Event listener for the submit button---------------------------------------
+  $("#new-tweet-form").on('submit', function(event) {
+    event.preventDefault();
+    let typedCharactersCount = $(this).find('#tweet-text').val().length;
+    if (typedCharactersCount === 0 || $(this).find('#tweet-text').val().trim() === "") {
+      $(".error-container").slideUp("slow", function() {
+        $('.error-message').text("No tweet content!!! Type something");
       });
-      $( ".error-container" ).slideDown( "slow")
-
-      //alert("No tweet content!!! type something")
-    }
-    else if(typedCharactersCount >140){
-      $( ".error-container" ).slideUp( "slow", function() {
-        $('.error-message').text("Tweet content is too long!!!Character limit is 140")
+      $(".error-container").slideDown("slow");
+    } else if (typedCharactersCount > 140) {
+      $(".error-container").slideUp("slow", function() {
+        $('.error-message').text("Tweet content is too long!!!Character limit is 140");
       });
-      $( ".error-container" ).slideDown( "slow")
-
-     // alert("Tweet content is too long!!!Character limit is 140")
+      $(".error-container").slideDown("slow");
+    } else {
+      $(".error-container").slideUp("slow");
+      const serializeData = $(this).serialize();
+      $.post("/tweets", serializeData, function(response) {
+        loadTweets();
+      });
+      $('#tweet-text').val("");
+      $('.counter').val("140");
     }
-    
-    else{
-      $( ".error-container" ).slideUp( "slow")
+  });
 
-    //console.log($(this).find('#tweet-text').val().length);
-    const serializeData =$(this).serialize();
-    //console.log(serializeData);
-    $.post("/tweets",serializeData,function(response){
-      //console.log(response);
-      loadTweets();
-      //$('#tweet-text').val("");
-      //$('.counter').val("140");
-    })
-    $('#tweet-text').val("");
-    $('.counter').val("140");
-    }
-    //$('#tweet-text').val("");
-    //$('.counter').val("140");
-  })
-
-})
+});
