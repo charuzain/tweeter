@@ -13,23 +13,22 @@ align-items: center;
 position:fixed;
 z-index: 1;
 }
+
 .tweeter-logo{
   font-size: 30px;
 }
 
 .double-down{
   display: flex;
-  flex-direction:column;
-  
+  flex-direction:column; 
 }
+
 #write {
   font-family:'Source Sans Pro'; 
-
-
 }
+
 .fa-angle-double-down{
   align-self:center;
-  color:red;
-  
+  color:red; 
 }
  

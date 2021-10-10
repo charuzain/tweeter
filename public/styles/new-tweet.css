@@ -3,10 +3,10 @@
   flex-direction:column;
   margin-top: 40px;
 }
+
 form{
   display: flex;
   flex-direction: column;
-  
 }
 
 #tweet-text{
@@ -15,8 +15,8 @@ form{
   background-color: transparent;
   border-bottom: 2px solid black;
   resize: none;
-
 }
+
 .tweet-footer{
   display: flex;
   justify-content: space-between;
@@ -30,15 +30,15 @@ form{
   color: white;
   margin-top: 4px;
   font-family: 'Bungee', cursive;
-  }
-  .redCounter{
+}
+
+.redCounter{
     color:red;
-  }
+}
 
 .counter{
- 
 font-weight: bold;
-  }
+}
 
 .new-tweet{
   display: flex;
@@ -51,6 +51,7 @@ font-weight: bold;
 .new-tweet:hover{
   box-shadow:13px 15px 9px -2px rgba(0,0,0,0.4); -webkit-box-shadow: 13px 15px 9px -2px rgba(0,0,0,0.4); -moz-box-shadow: 13px 15px 9px -2px rgba(0,0,0,0.4);
 }
+
 .new-tweet-avatar{
   display: flex;
   flex-direction: row;
@@ -69,25 +70,27 @@ font-weight: bold;
   justify-content: flex-end;
   align-items: center;
   display: flex;
-  color:#A0A0A0}
+  color:#A0A0A0
+}
 
-  .profile-name{
+.profile-name{
     vertical-align: middle;
     align-items: center;
     display: flex;
     padding-left: 15px;
-
   }
   
-  .text-div{
+.text-div{
   padding: 35px 0px;
   border-bottom: 3px solid black;
   margin-bottom: 20px;
     }
+
 .icons .fas{
 margin-left: 10px;
 color: #060f85;
 }
+
 .icons .fas:hover{
 color:#FDB900;
 cursor: pointer;
@@ -95,7 +98,6 @@ cursor: pointer;
 
 .error-container{
   color: red;
-
   margin-bottom: 20px;
   border:2px solid red;
   padding: 5px;
@@ -114,22 +116,17 @@ width:30vw;
 margin-left:3vw;
 margin-right:8vw;
 padding-top: 40px;
-
-
 }
 
 .container{
   margin-top: 150px;
   width: 56vw;
-  margin-right:3vw;
-  
-  
-  
+  margin-right:3vw; 
 }
+
 nav{
   background-color: #4056A1;
   background-image: none;
-
 }
 
 }
