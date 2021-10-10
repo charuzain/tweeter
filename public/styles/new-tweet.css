@@ -1,11 +1,12 @@
-
 .tweet{
   display: flex;
-  flex-direction:column
+  flex-direction:column;
+  margin-top: 40px;
 }
 form{
   display: flex;
   flex-direction: column;
+  
 }
 
 #tweet-text{
@@ -38,8 +39,9 @@ font-weight: bold;
 .new-tweet{
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 20px;
   border: 2px solid black;
+  margin: 20px 0;
 }
 
 .new-tweet:hover{
@@ -84,4 +86,12 @@ color: #060f85;
 .icons .fas:hover{
 color:#FDB900;
 cursor: pointer;
+}
+
+.error-container{
+  color: red;
+
+  margin-bottom: 20px;
+  border:2px solid red;
+  padding: 5px;
 }

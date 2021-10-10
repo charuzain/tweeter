@@ -12,6 +12,7 @@ const escape = function (str) {
 };
 
 $(document).ready(function () {
+  $('.error-container').hide();
   
   const loadTweets = function(){
     $.ajax({
@@ -62,17 +63,33 @@ $(document).ready(function () {
     }
   }
 
+
+
+
+
+
   $("#new-tweet-form").on('submit', function(event){
     event.preventDefault(); 
     let typedCharactersCount =$(this).find('#tweet-text').val().length;
     if(typedCharactersCount===0){
-      alert("No tweet content!!! type something")
+      $( ".error-container" ).slideUp( "slow", function() {
+        $('.error-message').text("No tweet content!!! type something")
+      });
+      $( ".error-container" ).slideDown( "slow")
+
+      //alert("No tweet content!!! type something")
     }
     else if(typedCharactersCount >140){
-      alert("Tweet content is too long!!!Character limit is 140")
+      $( ".error-container" ).slideUp( "slow", function() {
+        $('.error-message').text("Tweet content is too long!!!Character limit is 140")
+      });
+      $( ".error-container" ).slideDown( "slow")
+
+     // alert("Tweet content is too long!!!Character limit is 140")
     }
     
     else{
+      $( ".error-container" ).slideUp( "slow")
 
     //console.log($(this).find('#tweet-text').val().length);
     const serializeData =$(this).serialize();
